@@ -36,13 +36,16 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       animation: fadeIn 1.2s ease-in-out;
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* Center on desktop */
       align-items: center;
+      position: relative;
     }
+
     .menu {
       display: flex;
       gap: 15px;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -64,10 +67,15 @@
       background: none;
       border: none;
       cursor: pointer;
+      position: absolute;
+      right: 20px;
     }
 
     /* Mobile menu styling */
     @media (max-width: 768px) {
+      nav {
+        justify-content: flex-start; /* Left align for mobile */
+      }
       .menu {
         display: none;
         flex-direction: column;
@@ -81,6 +89,10 @@
       }
       .menu.active {
         display: flex;
+      }
+      .menu a {
+        padding: 12px 20px;
+        width: 100%;
       }
       .menu-toggle {
         display: block;
