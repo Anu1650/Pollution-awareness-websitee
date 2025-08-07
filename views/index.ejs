@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Breathe Easy | Pollution Awareness</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: white;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background-color: #007BFF;
+      padding: 12px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    nav a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: url('https://images.unsplash.com/photo-1530569673472-307dc017a82d?auto=format&fit=crop&w=1500&q=80') no-repeat center/cover;
+      color: white;
+      animation: zoomIn 1.5s ease;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeUp 1.2s ease-in-out;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007BFF;
+    }
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .section ul li {
+      background: white;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .section ul li:hover {
+      transform: translateY(-5px);
+    }
+
+    .quiz button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    .quiz button:hover {
+      transform: scale(1.05);
+      background-color: #218838;
+    }
+
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: #007BFF;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #007BFF;
+      color: white;
+    }
+    footer a {
+      color: yellow;
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(1.1); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Breathe Easy</h1>
+    <p>Raise Awareness. Reduce Pollution. Restore Earth.</p>
+  </header>
+
+  <nav>
+    <a href="#types">Types of Pollution</a>
+    <a href="#aqi">Live AQI</a>
+    <a href="#tips">What You Can Do</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#contact">Join Us</a>
+    <a href="/admin">Admin</a>
+  </nav>
+
+  <div class="hero">
+    <h1>Protect Our Planet</h1>
+    <p>Learn. Act. Inspire.</p>
+  </div>
+
+  <div class="section" id="types">
+    <h2>Types of Pollution</h2>
+    <ul>
+      <li><strong>Air Pollution:</strong> Emissions from vehicles, industries, and burning fuels.</li>
+      <li><strong>Water Pollution:</strong> Waste dumping, oil spills, and industrial runoff.</li>
+      <li><strong>Soil Pollution:</strong> Use of pesticides, landfills, and chemical spills.</li>
+      <li><strong>Noise Pollution:</strong> Traffic, loudspeakers, construction noise.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="aqi">
+    <h2>Live AQI (Air Quality Index)</h2>
+    <p id="aqi-value">Loading AQI...</p>
+    <script>
+      fetch('https://api.waqi.info/feed/delhi/?token=demo')
+        .then(res => res.json())
+        .then(data => {
+          const aqi = data.data.aqi;
+          document.getElementById("aqi-value").innerText = `Delhi AQI: ${aqi}`;
+        })
+        .catch(() => {
+          document.getElementById("aqi-value").innerText = "Unable to load AQI";
+        });
+    </script>
+  </div>
+
+  <div class="section" id="tips">
+    <h2>What You Can Do</h2>
+    <ul>
+      <li>Use public transport or carpool.</li>
+      <li>Switch to renewable energy sources.</li>
+      <li>Plant trees and support green spaces.</li>
+      <li>Avoid single-use plastics.</li>
+    </ul>
+  </div>
+
+  <div class="section quiz" id="quiz">
+    <h2>Pollution Awareness Quiz</h2>
+    <p>Q1: What is the main cause of air pollution in cities?</p>
+    <button onclick="alert('✅ Correct! Vehicles emit harmful gases.')">Vehicles</button>
+    <button onclick="alert('❌ Incorrect. Trees help clean the air.')">Trees</button>
+    <button onclick="alert('❌ Incorrect. Water is not the primary cause.')">Water</button>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Join the Movement</h2>
+    <form method="POST" action="/contact" autocomplete="off">
+      <label>Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Message:</label>
+      <textarea name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Breathe Easy. All Rights Reserved. | <a href="#">Back to Top</a></p>
+  </footer>
+
+</body>
+</html>
