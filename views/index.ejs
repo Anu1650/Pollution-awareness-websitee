@@ -29,14 +29,19 @@
       margin-top: 10px;
     }
 
+    /* NAVIGATION */
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
       background-color: #007BFF;
-      padding: 12px 0;
+      padding: 12px 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       animation: fadeIn 1.2s ease-in-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu {
+      display: flex;
+      gap: 15px;
     }
     nav a {
       color: white;
@@ -51,6 +56,38 @@
       transform: scale(1.05);
     }
 
+    /* Hamburger button */
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Mobile menu styling */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #007BFF;
+        padding: 10px 0;
+        animation: slideDown 0.3s ease-in-out;
+      }
+      .menu.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 80px 20px;
@@ -152,6 +189,10 @@
       from { transform: scale(1.1); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -162,12 +203,15 @@
   </header>
 
   <nav>
-    <a href="#types">Types of Pollution</a>
-    <a href="#aqi">Live AQI</a>
-    <a href="#tips">What You Can Do</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#contact">Join Us</a>
-    <a href="/admin">Admin</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="menu">
+      <a href="#types">Types of Pollution</a>
+      <a href="#aqi">Live AQI</a>
+      <a href="#tips">What You Can Do</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#contact">Join Us</a>
+      <a href="/admin">Admin</a>
+    </div>
   </nav>
 
   <div class="hero">
@@ -238,6 +282,12 @@
   <footer>
     <p>&copy; 2025 Breathe Easy. All Rights Reserved. | <a href="#">Back to Top</a></p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector(".menu").classList.toggle("active");
+    }
+  </script>
 
 </body>
 </html>
