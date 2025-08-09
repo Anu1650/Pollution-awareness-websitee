@@ -214,17 +214,15 @@ nav {
 <body>
 
   <header>
-    <h1>Breathe Easy</h1>
-    <p>Raise Awareness. Reduce Pollution. Restore Earth.</p>
+    <h1>Pollution Awarness & Renewable Energy</h1>
+    <p>We are second-year AI & ML Studens from SPCOE Otur We aim to raise<br> awareness about pollution and promote renewable energy For a cleaner future.</p>
   </header>
 
   <nav>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="menu">
       <a href="#types">Types of Pollution</a>
-      <a href="#aqi">Live AQI</a>
       <a href="#tips">What You Can Do</a>
-      <a href="#quiz">Quiz</a>
       <a href="#contact">Join Us</a>
       <a href="/admin">Admin</a>
     </div>
@@ -245,22 +243,6 @@ nav {
     </ul>
   </div>
 
-  <div class="section" id="aqi">
-    <h2>Live AQI (Air Quality Index)</h2>
-    <p id="aqi-value">Loading AQI...</p>
-    <script>
-      fetch('https://api.waqi.info/feed/delhi/?token=demo')
-        .then(res => res.json())
-        .then(data => {
-          const aqi = data.data.aqi;
-          document.getElementById("aqi-value").innerText = `Delhi AQI: ${aqi}`;
-        })
-        .catch(() => {
-          document.getElementById("aqi-value").innerText = "Unable to load AQI";
-        });
-    </script>
-  </div>
-
   <div class="section" id="tips">
     <h2>What You Can Do</h2>
     <ul>
@@ -269,14 +251,6 @@ nav {
       <li>Plant trees and support green spaces.</li>
       <li>Avoid single-use plastics.</li>
     </ul>
-  </div>
-
-  <div class="section quiz" id="quiz">
-    <h2>Pollution Awareness Quiz</h2>
-    <p>Q1: What is the main cause of air pollution in cities?</p>
-    <button onclick="alert('✅ Correct! Vehicles emit harmful gases.')">Vehicles</button>
-    <button onclick="alert('❌ Incorrect. Trees help clean the air.')">Trees</button>
-    <button onclick="alert('❌ Incorrect. Water is not the primary cause.')">Water</button>
   </div>
 
   <div class="section" id="contact">
@@ -296,7 +270,7 @@ nav {
   </div>
 
   <footer>
-    <p>&copy; 2025 Breathe Easy. All Rights Reserved. | <a href="#">Back to Top</a></p>
+    <p>&copy; 2025 | Breathe Easy. All Rights Reserved.<ul>Samarth Rajendra Jadhav </ul> Department of AI & ML, SPCOE Otur <br><a href="#">Back to Top</a></p>
   </footer>
 
   <script>
