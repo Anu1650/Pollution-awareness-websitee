@@ -30,16 +30,20 @@
     }
 
     /* NAVIGATION */
-    nav {
-      background-color: #007BFF;
-      padding: 12px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      animation: fadeIn 1.2s ease-in-out;
-      display: flex;
-      justify-content: center; /* Center on desktop */
-      align-items: center;
-      position: relative;
-    }
+   /* NAVIGATION */
+nav {
+  background-color: #007BFF;
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  animation: fadeIn 1.2s ease-in-out;
+  display: flex;
+  justify-content: center; /* Center on desktop */
+  align-items: center;
+  position: sticky; /* Stick to top */
+  top: 0; /* Required for sticky */
+  z-index: 1000; /* Stay above other content */
+}
+
 
     .menu {
       display: flex;

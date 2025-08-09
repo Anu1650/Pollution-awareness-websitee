@@ -111,11 +111,20 @@
     from {opacity: 0; transform: translateY(-20px);}
     to {opacity: 1; transform: translateY(0);}
   }
+  .login-container a:hover{
+      color: rgb(255, 255, 255);
+      text-decoration:tan;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 </style>
 </head>
 <body>
 
 <div class="login-container">
+  <a onclick="window.history.back();" style="padding-right: 90%;color: #fff;">Back</a>
   <h2>Admin Login</h2>
   
   <% if (error) { %>
